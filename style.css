@@ -236,10 +236,27 @@ body {
 }
 
 /* Page Specific: AC / Usage */
-.ac-controls {
+.tab{
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.tabcontent{
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 .control-item {
@@ -249,6 +266,93 @@ body {
     gap: 5px;
     font-size: 0.8rem;
     cursor: pointer;
+    border: none;
+    background: none;
+}
+.control-item.active {
+    opacity: 1;
+    color: var(--primary); 
+    font-weight: bold;
+}
+
+#tab1{
+    display: block;
+}
+.speed-group {
+    display: grid;
+    grid-template-columns: 1fr; /* เรียงแนวตั้ง */
+    gap: 15px;
+    justify-items: center;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px; /* จำกัดความกว้างไม่ให้ยืดเกินไป */
+    margin: 0 auto 30px auto; /* จัดกึ่งกลาง */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* เพิ่มเงาบางๆ ให้ดูมีมิติ */
+}
+
+/* สไตล์ปุ่มกดทั่วไป */
+.speed-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    padding: 0 15px;
+    border-radius: 15px; /* ปรับให้โค้งมนขึ้น */
+    border: 2px solid var(--primary); /* ขอบสี Primary */
+    cursor: pointer;
+    transition: all 0.3s ease; /* เพิ่ม Animation นุ่มๆ */
+    outline: none;
+}
+
+/* Hover Effect: เมื่อเอาเมาส์ชี้ */
+.speed-btn:hover {
+    background-color: #f0f7ff;
+    transform: translateY(-2px); /* ลอยขึ้นเล็กน้อย */
+}
+
+/* ส่วนประกอบภายในปุ่ม (ไอคอน) */
+.speed-btn i {
+    font-size: 1.2rem;
+    margin-right: 15px;
+    background-color: var(--bg-icon);
+    color: var(--text-dark);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* ส่วนประกอบภายในปุ่ม (ข้อความ) */
+.speed-btn p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+/* --- STATE: ACTIVE (เมื่อถูกกด) --- */
+.speed-btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); /* เงาสีฟ้าเรืองแสง */
+}
+
+.speed-btn.active p {
+    color: var(--white); /* เปลี่ยนตัวหนังสือเป็นสีขาว */
+}
+
+.speed-btn.active i {
+    background-color: var(--white); /* เปลี่ยนพื้นหลังไอคอนเป็นสีขาว */
+    color: var(--primary); /* เปลี่ยนตัวไอคอนเป็นสี Primary */
 }
 
 .control-item .icon-box {
@@ -260,11 +364,14 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    border: 2px solid transparent;
+    transition: 0.5s;
 }
 
-.control-item .icon-box.active {
+.control-item.active .icon-box {
     color: var(--primary);
     border: 2px solid var(--primary);
+    transition: 0.5s;    
 }
 
 .dial-container {

@@ -97,7 +97,8 @@
             <header class="sub-header">
                 <button class="back-btn" onclick="navigateTo('home')"><i class="fa-solid fa-chevron-left"></i></button>
                 <h2>AC Unit</h2>
-                <div style="width: 24px;"></div> </header>
+                <div style="width: 24px;"></div>
+            </header>
             
             <div class="room-selector-small">
                 <div class="room-icon active"><i class="fa-solid fa-couch"></i></div>
@@ -106,21 +107,22 @@
                 <div class="room-icon"><i class="fa-solid fa-bath"></i></div>
             </div>
 
-            <div class="ac-controls">
-                <div class="control-item">
+            <div class="tab">
+                <button class="control-item control cooling active" onclick="openTab(event, 'tab1')">
                     <div class="icon-box"><i class="fa-solid fa-fan"></i></div>
                     <span>Fan Speed</span>
-                </div>
-                <div class="control-item">
-                    <div class="icon-box active"><i class="fa-regular fa-snowflake"></i></div>
+                </button>
+                <button class="control-item control fan-speed"  onclick="openTab(event, 'tab2')">
+                    <div class="icon-box"><i class="fa-regular fa-snowflake"></i></div>
                     <span>Cooling</span>
-                </div>
-                <div class="control-item">
-                    <div class="icon-box"><i class="fa-regular fa-lightbulb"></i></div>
-                    <span>Light</span>
-                </div>
+                </button>
+                <button class="control-item control light"  onclick="openTab(event, 'tab3')">
+                    <div class="icon-box"><i class="fa-solid fa-left-right"></i></div>
+                    <span>Swing</span>
+                </button>
             </div>
 
+        <!-- <div id="tab1" class="tabcontent temperature">
             <div class="dial-container">
                 <button class="adjust-btn minus" onclick="adjustTemp(-1)">-</button>
                 <div class="main-dial">
@@ -144,6 +146,46 @@
                     <h3>50%</h3>
                 </div>
             </div>
+        </div> -->
+        <div id="tab1" class="tabcontent fan-speed">
+            <div class="speed-group" id="speed-control-4">
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-fan"></i><p>Low</p>
+                </button>
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-fan"></i><p>Medium</p>
+                </button>
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-fan"></i><p>High</p>
+                </button>
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-fan"></i><p>Auto</p>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab2" class="tabcontent cooling">
+            <div class="speed-group" id="speed-control-3">
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-regular fa-snowflake"></i><p>Cooling Mode</p>
+                </button>
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-wind"></i><p>Dry Mode</p>
+                </button>
+                <button class="speed-btn" onclick="selectSpeed(this)">
+                    <i class="fa-solid fa-fan"></i><p>Fan Mode</p>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab3" class="tabcontent swing">
+            <div class="speed-group" id="speed-control-1">
+                <button class="speed-btn" onclick="toggleSingle(this)">
+                    <i class="fa-solid fa-power-off"></i><p>Swing Mode</p>
+                </button>
+            </div>
+        </div>
+
         </section>
  <!------- Static-Page ------->
         <section id="static" class="page">

@@ -47,14 +47,6 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// Toggle Change Background-Color in Room-Page
-// document.querySelectorAll('.room-card input[type="checkbox"]').forEach(toggle => {
-//     toggle.addEventListener('change', () => {
-//         const card = toggle.closest('.room-card'); // หา parent card
-//         card.style.backgroundColor = toggle.checked ? '#3A81F7' : '#e0dfdf';
-//     });
-// });
-
 document.querySelectorAll('.room-card input[type="checkbox"]').forEach(toggle => {
     toggle.addEventListener('change', () => {
         const card = toggle.closest('.room-card'); // หา parent card
@@ -75,30 +67,75 @@ document.querySelectorAll('.room-card input[type="checkbox"]').forEach(toggle =>
 
 // Card7-Slider
 function updateSlider(element) {
-    // 1. รับค่าปัจจุบัน
     const val = element.value;
     
-    // 2. อัปเดตตัวเลขในกล่อง
     const valueDisplay = document.getElementById('sliderValue');
     valueDisplay.innerText = val + "%";
 
-    // 3. คำนวณตำแหน่งซ้าย-ขวา ของตัวเลขให้ตรงกับปุ่ม
-    // สูตร: (value - min) * 100 / (max - min)
-    // เนื่องจาก min=0 max=100 สูตรจึงเหลือแค่ val เฉยๆ แต่ต้องชดเชยขนาดปุ่มนิดหน่อย
     const percent = (val - element.min) / (element.max - element.min) * 100;
     
-    // ขยับกล่องตัวเลข (ใช้ calc เพื่อชดเชยความกว้างของปุ่ม Thumb ประมาณ 10-15px)
-    // การคำนวณนี้ช่วยให้ตัวเลขไม่ตกขอบตอนอยู่ที่ 0% หรือ 100%
     const thumbWidth = 18; 
     valueDisplay.style.left = `calc(${percent}% + (${8 - percent * 0.15}px))`;
 
-    // 4. สร้างสีพื้นหลัง (Progress Bar)
-    // สีทางซ้าย (#4B89FF) -> สีทางขวา (#E0E0E0)
+
     element.style.background = `linear-gradient(to right, #4B89FF ${percent}%, #ffffffff ${percent}%)`;
 }
-
-// เรียกใช้ครั้งแรกตอนโหลดหน้าเว็บ เพื่อให้สีขึ้นทันที
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('dimmerSlider');
     if(slider) updateSlider(slider);
 });
+
+// Usage-Page
+// Tab Function
+        function openTab(evt, tabNum) {
+            var i, tabcontent, control;
+
+            // Hide tabcontent
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove class active
+            control = document.getElementsByClassName("control");
+            for (i = 0; i < control.length; i++) {
+                control[i].classList.remove("active");
+            }
+
+            // Display: block tab Num
+            document.getElementById(tabNum).style.display = "block";
+
+            // Add class active
+            evt.currentTarget.classList.add("active");
+}
+
+// Usage-Page 
+// Button Active
+function selectSpeed(btn) {
+
+    const container = btn.parentElement;
+    
+    // Remove class 'active' 
+    const buttons = container.getElementsByClassName("speed-btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+    
+    // Add class 'active' to click button
+    btn.classList.add("active");
+    
+    // (Optional) display Console
+    console.log("Selected:", btn.querySelector("p").innerText);
+}
+
+// Toogle clik on and off
+function toggleSingle(btn) {
+    // Swap class active
+    btn.classList.toggle("active");
+    
+    if(btn.classList.contains("active")) {
+        console.log("Status: ON");
+    } else {
+        console.log("Status: OFF");
+    }
+}
