@@ -108,85 +108,71 @@
             </div>
 
             <div class="tab">
-                <button class="control-item control cooling active" onclick="openTab(event, 'tab1')">
+                <button class="control-item control cooling popup-trigger" onclick="togglePopup('tab1', this)">
                     <div class="icon-box"><i class="fa-solid fa-fan"></i></div>
                     <span>Fan Speed</span>
                 </button>
-                <button class="control-item control fan-speed"  onclick="openTab(event, 'tab2')">
+                <button class="control-item control fan-speed active"  onclick="openTab(event, 'tab2')">
                     <div class="icon-box"><i class="fa-regular fa-snowflake"></i></div>
                     <span>Cooling</span>
                 </button>
-                <button class="control-item control light"  onclick="openTab(event, 'tab3')">
+                <button class="control-item control light popup-trigger"  onclick="togglePopup('tab3', this)">
                     <div class="icon-box"><i class="fa-solid fa-left-right"></i></div>
                     <span>Swing</span>
                 </button>
             </div>
 
-        <!-- <div id="tab1" class="tabcontent temperature">
-            <div class="dial-container">
-                <button class="adjust-btn minus" onclick="adjustTemp(-1)">-</button>
-                <div class="main-dial">
-                    <div class="dial-inner">
-                        <h1 id="temp-display">20°C</h1>
+            <div class="content-container" style="position: relative;">
+
+                <div id="tab1" class="tabcontent fan-speed popup">
+                    <div class="speed-group" id="speed-control-4">
+                        <button class="speed-btn" onclick="selectSpeed(this)">
+                            <i class="fa-solid fa-fan" style="font-size: 1rem;"></i><p>Low</p>
+                        </button>
+                        <button class="speed-btn" onclick="selectSpeed(this)">
+                            <i class="fa-solid fa-fan" style="font-size: 1rem;"></i><p>Medium</p>
+                        </button>
+                        <button class="speed-btn" onclick="selectSpeed(this)">
+                            <i class="fa-solid fa-fan" style="font-size: 1rem;"></i><p>High</p>
+                        </button>
+                        <button class="speed-btn" onclick="selectSpeed(this)">
+                            <i class="fa-solid fa-fan" style="font-size: 1rem;"></i><p>Auto</p>
+                        </button>
                     </div>
                 </div>
-                <button class="adjust-btn plus" onclick="adjustTemp(1)">+</button>
-            </div>
 
-            <div class="ac-stats">
-                <div class="stat-box">
-                    <span>Temperature</span>
-                    <h3>25°C</h3>
+                <div id="tab2" class="tabcontent temperature">
+                    <div class="dial-container">
+                        <button class="adjust-btn minus" onclick="adjustTemp(-1)">-</button>
+                        <div class="main-dial">
+                            <div class="dial-inner">
+                                <h1 id="temp-display">20°C</h1>
+                            </div>
+                        </div>
+                        <button class="adjust-btn plus" onclick="adjustTemp(1)">+</button>
+                    </div>
+                    <div class="ac-stats">
+                        <div class="stat-box">
+                            <span>Temperature</span>
+                            <h3>25°C</h3>
+                        </div>
+                        <div class="power-btn">
+                            <i class="fa-solid fa-power-off"></i>
+                        </div>
+                        <div class="stat-box">
+                            <span>Humidity</span>
+                            <h3>50%</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="power-btn">
-                    <i class="fa-solid fa-power-off"></i>
+
+                <div id="tab3" class="tabcontent swing popup">
+                    <div class="speed-group" id="speed-control-1">
+                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-solid fa-power-off"></i><p>Swing Mode</p></button>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <span>Humidity</span>
-                    <h3>50%</h3>
-                </div>
-            </div>
-        </div> -->
-        <div id="tab1" class="tabcontent fan-speed">
-            <div class="speed-group" id="speed-control-4">
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-fan"></i><p>Low</p>
-                </button>
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-fan"></i><p>Medium</p>
-                </button>
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-fan"></i><p>High</p>
-                </button>
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-fan"></i><p>Auto</p>
-                </button>
-            </div>
         </div>
-
-        <div id="tab2" class="tabcontent cooling">
-            <div class="speed-group" id="speed-control-3">
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-regular fa-snowflake"></i><p>Cooling Mode</p>
-                </button>
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-wind"></i><p>Dry Mode</p>
-                </button>
-                <button class="speed-btn" onclick="selectSpeed(this)">
-                    <i class="fa-solid fa-fan"></i><p>Fan Mode</p>
-                </button>
-            </div>
-        </div>
-
-        <div id="tab3" class="tabcontent swing">
-            <div class="speed-group" id="speed-control-1">
-                <button class="speed-btn" onclick="toggleSingle(this)">
-                    <i class="fa-solid fa-power-off"></i><p>Swing Mode</p>
-                </button>
-            </div>
-        </div>
-
-        </section>
+    </section>
  <!------- Static-Page ------->
         <section id="static" class="page">
             <header class="sub-header">

@@ -87,27 +87,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Usage-Page
 // Tab Function
-        function openTab(evt, tabNum) {
-            var i, tabcontent, control;
+//         function openTab(evt, tabNum) {
+//             var i, tabcontent, control;
 
-            // Hide tabcontent
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
+//             // Hide tabcontent
+//             tabcontent = document.getElementsByClassName("tabcontent");
+//             for (i = 0; i < tabcontent.length; i++) {
+//                 tabcontent[i].style.display = "none";
+//             }
 
-            // Remove class active
-            control = document.getElementsByClassName("control");
-            for (i = 0; i < control.length; i++) {
-                control[i].classList.remove("active");
-            }
+//             // Remove class active
+//             control = document.getElementsByClassName("control");
+//             for (i = 0; i < control.length; i++) {
+//                 control[i].classList.remove("active");
+//             }
 
-            // Display: block tab Num
-            document.getElementById(tabNum).style.display = "block";
+//             // Display: block tab Num
+//             document.getElementById(tabNum).style.display = "block";
 
-            // Add class active
-            evt.currentTarget.classList.add("active");
-}
+//             // Add class active
+//             evt.currentTarget.classList.add("active");
+// }
 
 // Usage-Page 
 // Button Active
@@ -137,5 +137,50 @@ function toggleSingle(btn) {
         console.log("Status: ON");
     } else {
         console.log("Status: OFF");
+    }
+}
+
+//Usage-Page
+// Pop-Up when click
+// ฟังก์ชันสำหรับเปิด/ปิด Pop-up (ใช้แทน openTab สำหรับปุ่ม Fan และ Swing)
+function togglePopup(popupId, triggerBtn) {
+    // 1. หา element ของ pop-up เป้าหมาย
+    const targetPopup = document.getElementById(popupId);
+    
+    // 2. ตรวจสอบสถานะปัจจุบันว่าเปิดอยู่หรือไม่
+    const isCurrentlyOpen = targetPopup.classList.contains('show');
+
+    // 3. ปิด Pop-up ทั้งหมดก่อนเสมอ (เพื่อไม่ให้เปิดซ้อนกัน)
+    const allPopups = document.querySelectorAll('.tabcontent.popup');
+    allPopups.forEach(popup => {
+        popup.classList.remove('show');
+    });
+    
+    // 4. เอาสถานะ active ออกจากปุ่ม trigger ทั้งหมด
+    const allTriggers = document.querySelectorAll('.popup-trigger');
+    allTriggers.forEach(trigger => {
+        trigger.classList.remove('active');
+    });
+
+    // 5. ถ้าเป้าหมายมันไม่ได้เปิดอยู่ ให้เปิดมัน และทำให้ปุ่มที่กดเป็น active
+    if (!isCurrentlyOpen) {
+        targetPopup.classList.add('show');
+        triggerBtn.classList.add('active');
+    } 
+    // ถ้ามันเปิดอยู่แล้ว โค้ดในข้อ 3 ได้ทำการปิดมันไปแล้ว จึงไม่ต้องทำอะไรเพิ่ม (เป็นการ Toggle ปิด)
+}
+
+function selectSpeed(btn) {
+    const container = btn.parentElement;
+    const buttons = container.getElementsByClassName("speed-btn");
+    // check active class"
+    const isAlreadyActive = btn.classList.contains("active");
+
+    // remove active and reset
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+    if (!isAlreadyActive) {
+        btn.classList.add("active");
     }
 }
