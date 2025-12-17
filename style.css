@@ -289,7 +289,21 @@ body {
 .tabcontent.swing.popup.show {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(-80%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.close-group{
+    display: flex;
+    justify-content: flex-end;
+}
+.close-button{
+    border: none;
+    background-color: #FFFFFF;
+}
+.close-button i {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    margin: 0px 0px 10px 0px;
 }
 
 #temp{

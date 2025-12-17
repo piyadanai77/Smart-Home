@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Usage-Page 
 // Button Active
 function selectSpeed(btn) {
-
     const container = btn.parentElement;
     
     // Remove class 'active' 
@@ -141,14 +140,12 @@ function toggleSingle(btn) {
 }
 
 //Usage-Page
-// Pop-Up when click
+// Pop-Up mode when click
 function togglePopup(popupId, triggerBtn) {
-
     const targetPopup = document.getElementById(popupId);
-    
     const isCurrentlyOpen = targetPopup.classList.contains('show');
-
     const allPopups = document.querySelectorAll('.tabcontent.popup');
+
     allPopups.forEach(popup => {
         popup.classList.remove('show');
     });
@@ -175,5 +172,22 @@ function selectSpeed(btn) {
     }
     if (!isAlreadyActive) {
         btn.classList.add("active");
+    }
+}
+//Close Tab
+function closePopup(btn) {
+    // 1. หา Pop-up ตัวที่ปุ่มนี้อาศัยอยู่ (หา parent ที่มี class 'popup')
+    const popup = btn.closest('.tabcontent.popup');
+    
+    if (popup) {
+        // 2. ปิด Pop-up
+        popup.classList.remove('show');
+        
+        // 3. เอาสถานะ Active ออกจากปุ่มกดด้านล่าง (Trigger)
+        // หาทุกปุ่มที่เป็น popup-trigger แล้วเอา active ออก
+        const triggers = document.querySelectorAll('.popup-trigger');
+        triggers.forEach(trigger => {
+            trigger.classList.remove('active');
+        });
     }
 }
