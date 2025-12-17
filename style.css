@@ -26,7 +26,7 @@ body {
     width: 100%;
     max-width: 414px; /* iPhone Max width approx */
     background-color: var(--bg-light);
-    min-height: 00vh;
+    min-height: 100vh;
     position: relative;
     padding-bottom: 80px; /* Space for nav */
     overflow-x: hidden;
@@ -611,11 +611,11 @@ body {
 }
 
 .bar-col .watt {
-    color: var(--text-gray)   
+    color: var(--text-gray);  
 }
 
 .bar-col .month-name {
-    color: var(--text-dark)
+    color: var(--text-dark);
 }
 .bar {
     width: 100%;
@@ -683,7 +683,7 @@ body {
 .room-card i {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: var(--text-dark);
+    color: var(--text-dark)!important;
 }
 
 .bg-blue {
@@ -784,7 +784,6 @@ body {
     opacity: 0;
     transition: opacity 0.2s;
     margin-top: 48px;
-    
 }
 
 .slider-container:hover .slider-value,
