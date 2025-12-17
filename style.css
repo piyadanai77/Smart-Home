@@ -286,7 +286,15 @@ body {
     visibility: visible;
     transform: translateX(-50%) translateY(5%);
 }
+.tabcontent.swing.popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-80%);
+}
 
+#temp{
+    display: block;
+}
 /*  Speed-group  pop-up */
 .tabcontent.popup .speed-group {
     padding: 0;
@@ -297,9 +305,6 @@ body {
 .speed-group{
     display: flex;
     flex-direction: column;
-}
-.speed-btn{
-    
 }
 
 /* Pop-up btn */
@@ -360,11 +365,7 @@ body {
     display: flex;
     justify-content: center;
     transition: all 0.5s ease;
-
 }
-/* --- Usage - Page --- */
-/* ---  Pop-up Style--- */
-
 .control-item {
     display: flex;
     flex-direction: column;
@@ -380,10 +381,9 @@ body {
     color: var(--primary); 
     font-weight: bold;
 }
+/* --- Usage - Page --- */
+/* ---  Pop-up Style--- */
 
-#tab2{
-    display: block;
-}
 /* .speed-group {
     display: grid;
     grid-template-columns: 1fr;

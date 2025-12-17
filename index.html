@@ -112,11 +112,11 @@
                     <div class="icon-box"><i class="fa-solid fa-fan"></i></div>
                     <span>Fan Speed</span>
                 </button>
-                <button class="control-item control fan-speed active"  onclick="openTab(event, 'tab2')">
-                    <div class="icon-box"><i class="fa-regular fa-snowflake"></i></div>
-                    <span>Cooling</span>
+                <button class="control-item control mode popup-trigger"  onclick="togglePopup('tab2', this)">
+                    <div class="icon-box"><i class="fa-solid fa-gears"></i></div>
+                    <span>Mode</span>
                 </button>
-                <button class="control-item control light popup-trigger"  onclick="togglePopup('tab3', this)">
+                <button class="control-item control swing popup-trigger"  onclick="togglePopup('tab3', this)">
                     <div class="icon-box"><i class="fa-solid fa-left-right"></i></div>
                     <span>Swing</span>
                 </button>
@@ -141,7 +141,21 @@
                     </div>
                 </div>
 
-                <div id="tab2" class="tabcontent temperature">
+                <div id="tab2" class="tabcontent mode popup">
+                    <div class="speed-group" id="speed-control-3">
+                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-regular fa-snowflake"></i><p>Cool</p></button>
+                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-solid fa-droplet"></i><p>Dry</p></button>
+                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-solid fa-fan"></i><p>Fan</p></button>
+                    </div>
+                </div>
+
+                <div id="tab3" class="tabcontent swing popup">
+                    <div class="speed-group" id="speed-control-1">
+                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-solid fa-power-off"></i><p>Swing Mode</p></button>
+                    </div>
+                </div>
+
+                <div id="temp" class="tabcontent temperature">
                     <div class="dial-container">
                         <button class="adjust-btn minus" onclick="adjustTemp(-1)">-</button>
                         <div class="main-dial">
@@ -166,11 +180,6 @@
                     </div>
                 </div>
 
-                <div id="tab3" class="tabcontent swing popup">
-                    <div class="speed-group" id="speed-control-1">
-                        <button class="speed-btn" onclick="selectSpeed(this)"><i class="fa-solid fa-power-off"></i><p>Swing Mode</p></button>
-                    </div>
-                </div>
         </div>
     </section>
  <!------- Static-Page ------->
